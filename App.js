@@ -1,16 +1,22 @@
-import * as React from "react";
-import { View, Text } from "react-native";
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Index from './screens/Index';
+import Add from './screens/Add';
+import Edit from './screens/Edit';
 
-export default function App() {
+const Stack = createStackNavigator();
+
+function App() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Universal React with Expo</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Index">
+        <Stack.Screen name="Index" component={Index} options={{ headerShown: false }}/>
+        <Stack.Screen name="Add" component={Add} options={{ headerShown: false }}/>
+        <Stack.Screen name="Edit" component={Edit} options={{ headerShown: false }}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
+
+export default App;
